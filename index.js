@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import Routes from "./routes/user.routes.js"
+import cookieParser from "cookie-parser"
 
 dotenv.config()
 
@@ -16,6 +17,8 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-type", "Authorization"]
 }))
+
+app.use(cookieParser())
 
 app.get("/", (req, res) => {
     res.send("Authentication with Prisma")
